@@ -1,24 +1,40 @@
 import { useState } from 'react'
 import './App.css'
 
-function App() {
+const App = () => {
   const [temperature, setTemperature] = useState(0)
+
+  var value = 1
+
+  const handleChange = (event) => {
+    setTemperature(event.target.value);
+    value = 2
+  };
+
+  const showTemperature = () => {
+    
+  }
 
   return (
     <div className='app'>
       <div className='container'>
         <h3>Enter tempeature</h3>
         <div className='conversionInput'>
-          <p>Degree</p>
-          <input type='number'></input>
+          <p>Degree (celsius)</p>
+          <input 
+          type='number'
+          id="temperature"
+          onChange={handleChange}
+          >
+          </input>
         </div>
         <div>
-          <button>Convert → </button>
+          <button onClick={showTemperature}>Convert → </button>
         </div>
       </div>
       <div className='results'>
         <div className='temperaturevalue'>
-          37
+          Farenheit: {temperature * 1.8 + 32}
         </div>
       </div>
     </div>
